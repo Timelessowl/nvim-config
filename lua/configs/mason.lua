@@ -12,6 +12,10 @@ return {
       package_uninstalled = " ",
     },
   },
-
+  enusre_installed = {
+    "clangd",
+    "clang-format",
+    "codelldb",
+  },
   max_concurrent_installers = 10,
 }

@@ -125,4 +125,8 @@ map("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to n
 map("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
+-- dap
+map("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { desc = "Add breakpoint at line" })
+map("n", "<leader>dr", "<cmd>DapContinue<CR>", { desc = "Start or continue the debugger" })
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
