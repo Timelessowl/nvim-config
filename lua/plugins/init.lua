@@ -7,7 +7,18 @@ return {
       require("base46").load_all_highlights()
     end,
   },
-
+  {
+    "sindrets/diffview.nvim",
+  },
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+      "nvim-telescope/telescope.nvim", -- optional
+    },
+    config = true,
+  },
   {
     "nvim-neotest/nvim-nio",
   },
