@@ -29,7 +29,23 @@ return {
       require "nvchad"
     end,
   },
-
+  {
+    "Exafunction/codeium.vim",
+    event = "BufEnter",
+  },
+  {
+    "github/copilot.vim",
+    config = function()
+      vim.g.copilot_no_tab_map = true
+    end,
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.vim" },
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },

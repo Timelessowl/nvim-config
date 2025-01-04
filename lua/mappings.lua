@@ -128,5 +128,34 @@ map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new
 -- dap
 map("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { desc = "Add breakpoint at line" })
 map("n", "<leader>dr", "<cmd>DapContinue<CR>", { desc = "Start or continue the debugger" })
+map("n", "<leader>dl", "<cmd>DapStepOut<CR>", { desc = "Step out of the current function/method" })
+map("n", "<leader>dj", "<cmd>DapStepInto<CR>", { desc = "Step into the current function/method" })
+map("n", "<leader>dk", "<cmd>DapStepOut<CR>", { desc = "Step out of the current function/method" })
+map("n", "<leader>dc", "<cmd>DapClearBreakpoints<CR>", { desc = "Clear all breakpoints" })
 
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+-- gitsigns
+map("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "Preview hunk" })
+map("n", "<leader>gb", ":Gitsigns blame_line<CR>", { desc = "Blame line" })
+map("n", "<leader>gl", ":Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle current line blame" })
+
+-- copilot
+map("i", "<C-CR>", 'copilot#Accept("\\<CR>")', { silent = true, expr = true, replace_keycodes = false })
+map("i", "<C-]>", "<Plug>(copilot-next)")
+
+-- neogit mappings
+map("n", "<leader>gs", ":Neogit kind=split<CR>", { desc = "Neogit split window" })
+map("n", "<leader>gc", ":Neogit commit<CR>", { desc = "Neogit commit" })
+map("n", "<leader>gp", ":Neogit push<CR>", { desc = "Neogit push" })
+map("n", "<leader>gP", ":Neogit pull<CR>", { desc = "Neogit pull" })
+map("n", "<leader>gf", ":Neogit fetch<CR>", { desc = "Neogit fetch" })
+map("n", "<leader>gF", ":Neogit fetch --all<CR>", { desc = "Neogit fetch all" })
+map("n", "<leader>gC", ":Neogit clone<CR>", { desc = "Neogit clone" })
+map("n", "<leader>gS", ":Neogit stash<CR>", { desc = "Neogit stash" })
+map("n", "<leader>gR", ":Neogit rebase<CR>", { desc = "Neogit rebase" })
+map("n", "<leader>gM", ":Neogit merge<CR>", { desc = "Neogit merge" })
+map("n", "<leader>gB", ":Neogit branch<CR>", { desc = "Neogit branch" })
+map("n", "<leader>gD", ":Neogit diff<CR>", { desc = "Neogit diff" })
+map("n", "<leader>gX", ":Neogit reset<CR>", { desc = "Neogit reset" })
+
+--neogit
+map("n", "<leader>gg", ":Neogit<CR>", { desc = "Neogit" })
