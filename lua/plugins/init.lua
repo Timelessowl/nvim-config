@@ -11,6 +11,10 @@ return {
     "sindrets/diffview.nvim",
   },
   {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
+  {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim", -- required

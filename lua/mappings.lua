@@ -19,6 +19,11 @@ map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
 map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
 map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
+map("n", "<C-H>", "<cmd> TmuxNavigateLeft<CR>", { desc = "switch window left" })
+map("n", "<C-L>", "<cmd> TmuxNavigateRight<CR>", { desc = "switch window right" })
+map("n", "<C-J>", "<cmd> TmuxNavigateDown<CR>", { desc = "switch window down" })
+map("n", "<C-K>", "<cmd> TmuxNavigateUp<CR>", { desc = "switch window up" })
+
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
 
 map("n", "<C-s>", "<cmd>w<CR>", { desc = "general save file" })
@@ -139,7 +144,7 @@ map("n", "<leader>gb", ":Gitsigns blame_line<CR>", { desc = "Blame line" })
 map("n", "<leader>gl", ":Gitsigns toggle_current_line_blame<CR>", { desc = "Toggle current line blame" })
 
 -- copilot
-map("i", "<C-CR>", 'copilot#Accept("\\<CR>")', { silent = true, expr = true, replace_keycodes = false })
+map("i", "<C-E>", 'copilot#Accept("\\<CR>")', { silent = true, expr = true, replace_keycodes = false })
 map("i", "<C-]>", "<Plug>(copilot-next)")
 
 -- neogit mappings
