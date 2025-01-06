@@ -164,3 +164,6 @@ map("n", "<leader>gX", ":Neogit reset<CR>", { desc = "Neogit reset" })
 
 --neogit
 map("n", "<leader>gg", ":Neogit<CR>", { desc = "Neogit" })
+
+-- lazygit
+map("n", "<leader>lg", ":LazyGit<CR>", { desc = "LazyGit" })
