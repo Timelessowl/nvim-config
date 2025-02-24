@@ -14,6 +14,26 @@ return {
       "nvim-lua/plenary.nvim",
     },
   },
+  { "eandrju/cellular-automaton.nvim" },
+  {
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = { enabled = true },
+      input = {
+        enabled = true,
+      },
+      quickfile = { enabled = true },
+      notifier = { enabled = true },
+      statuscolumn = { enabled = true },
+    },
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require "configs.lualine"
+    end,
+  },
   {
     "sindrets/diffview.nvim",
   },
@@ -43,12 +63,6 @@ return {
   {
     "Exafunction/codeium.vim",
     event = "BufEnter",
-  },
-  {
-    "github/copilot.vim",
-    config = function()
-      vim.g.copilot_no_tab_map = true
-    end,
   },
   {
     "zbirenbaum/copilot-cmp",
@@ -216,13 +230,18 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      "jonarrien/telescope-cmdline.nvim",
+      "nvim-telescope/telescope-ui-select.nvim",
+    },
     cmd = "Telescope",
     opts = function()
       return require "configs.telescope"
     end,
   },
-
   {
     "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPost", "BufNewFile" },

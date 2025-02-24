@@ -14,10 +14,10 @@ map("i", "<C-l>", "<Right>", { desc = "move right" })
 map("i", "<C-j>", "<Down>", { desc = "move down" })
 map("i", "<C-k>", "<Up>", { desc = "move up" })
 
-map("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
-map("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
-map("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
-map("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
+map("n", "<Left>", "<C-w>h", { desc = "switch window left" })
+map("n", "<Right>", "<C-w>l", { desc = "switch window right" })
+map("n", "<Down>", "<C-w>j", { desc = "switch window down" })
+map("n", "<Up>", "<C-w>k", { desc = "switch window up" })
 
 map("n", "<C-H>", "<cmd> TmuxNavigateLeft<CR>", { desc = "switch window left" })
 map("n", "<C-L>", "<cmd> TmuxNavigateRight<CR>", { desc = "switch window right" })
@@ -73,12 +73,15 @@ map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = 
 map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
 map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
 map("n", "<leader>pt", "<cmd>Telescope terms<CR>", { desc = "telescope pick hidden term" })
+map("n", "<leader>fe", "<cmd>Telescope lsp_document_symbols<CR>", { desc = "telescope lsp document symbols" })
+map("n", ":", "<cmd>Telescope cmdline<CR>", { desc = "telescope command line" })
 
 map("n", "<leader>th", function()
   require("nvchad.themes").open()
 end, { desc = "telescope nvchad themes" })
 
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "telescope find files" })
+map("n", "<leader><leader>", "<cmd>Telescope find_files<cr>", { desc = "telescope find files" })
 map(
   "n",
   "<leader>fa",
@@ -147,6 +150,11 @@ map("n", "<leader>gl", ":Gitsigns toggle_current_line_blame<CR>", { desc = "Togg
 map("i", "<C-E>", 'copilot#Accept("\\<CR>")', { silent = true, expr = true, replace_keycodes = false })
 map("i", "<C-]>", "<Plug>(copilot-next)")
 
+-- codeium
+map("i", "<C-e>", function()
+  return vim.fn["codeium#Accept"]()
+end, { expr = true, silent = true })
+
 -- neogit mappings
 map("n", "<leader>gs", ":Neogit kind=split<CR>", { desc = "Neogit split window" })
 map("n", "<leader>gc", ":Neogit commit<CR>", { desc = "Neogit commit" })
@@ -161,8 +169,6 @@ map("n", "<leader>gM", ":Neogit merge<CR>", { desc = "Neogit merge" })
 map("n", "<leader>gB", ":Neogit branch<CR>", { desc = "Neogit branch" })
 map("n", "<leader>gD", ":Neogit diff<CR>", { desc = "Neogit diff" })
 map("n", "<leader>gX", ":Neogit reset<CR>", { desc = "Neogit reset" })
-
---neogit
 map("n", "<leader>gg", ":Neogit<CR>", { desc = "Neogit" })
 
 -- lazygit

@@ -58,6 +58,10 @@ cmp.setup.filetype("cpp", {
   sources = cmp.config.sources {
     { name = "nvim_lsp" },
     { name = "buffer" },
+    { name = "luasnip" },
+    { name = "path" },
+    { name = "nvim_lsp_signature_help" }, -- Добавляем подсказки по параметрам функций
+    { name = "spell" }, -- Автодополнение слов в комментариях
   },
 })
 

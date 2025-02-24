@@ -8,17 +8,31 @@ local lspconfig = require "lspconfig"
 lspconfig.servers = {
   "lua_ls",
   "clangd",
+  "cmake",
 }
 
 -- list of servers configured with default config.
-local default_servers = {}
+local default_servers = { "cmake" }
 
+local util = require "lspconfig.util"
 lspconfig.clangd.setup {
+  cmd = { "clangd", "--background-index", "--clang-tidy", "--completion-style=detailed" },
+  filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
   on_attach = function(client, bufnr)
     client.server_capabilities.signatureHelpProvider = false
     on_attach(client, bufnr)
   end,
-  capabilities = capabilities,
+  root_dir = function(fname)
+    return util.root_pattern(
+      ".clangd",
+      ".clang-tidy",
+      ".clang-format",
+      "compile_commands.json",
+      "compile_flags.txt",
+      "configure.ac" -- AutoTools
+    )(fname) or vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1])
+  end,
+  capabilities = require("cmp_nvim_lsp").default_capabilities(),
 }
 
 -- lsps with default config
@@ -29,29 +43,3 @@ for _, lsp in ipairs(default_servers) do
     capabilities = capabilities,
   }
 end
-
--- lspconfig.lua_ls.setup {
---   on_attach = on_attach,
---   on_init = on_init,
---   capabilities = capabilities,
---
---   settings = {
---     Lua = {
---       diagnostics = {
---         enable = false, -- Disable all diagnostics from lua_ls
---         -- globals = { "vim" },
---       },
---       workspace = {
---         library = {
---           vim.fn.expand "$VIMRUNTIME/lua",
---           vim.fn.expand "$VIMRUNTIME/lua/vim/lsp",
---           vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types",
---           vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
---           "${3rd}/love2d/library",
---         },
---         maxPreload = 100000,
---         preloadFileSize = 10000,
---       },
---     },
---   },
--- }

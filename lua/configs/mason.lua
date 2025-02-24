@@ -16,6 +16,7 @@ return {
     "clangd",
     "clang-format",
     "codelldb",
+    "cppcheck",
   },
   max_concurrent_installers = 10,
 }
