@@ -14,10 +14,10 @@ map("i", "<C-l>", "<Right>", { desc = "move right" })
 map("i", "<C-j>", "<Down>", { desc = "move down" })
 map("i", "<C-k>", "<Up>", { desc = "move up" })
 
-map("n", "<Left>", "<C-w>h", { desc = "switch window left" })
-map("n", "<Right>", "<C-w>l", { desc = "switch window right" })
-map("n", "<Down>", "<C-w>j", { desc = "switch window down" })
-map("n", "<Up>", "<C-w>k", { desc = "switch window up" })
+map("n", "<C-H>", "<C-w>h", { desc = "switch window left" })
+map("n", "<C-L>", "<C-w>l", { desc = "switch window right" })
+map("n", "<C-J>", "<C-w>j", { desc = "switch window down" })
+map("n", "<C-K>", "<C-w>k", { desc = "switch window up" })
 
 map("n", "<C-H>", "<cmd> TmuxNavigateLeft<CR>", { desc = "switch window left" })
 map("n", "<C-L>", "<cmd> TmuxNavigateRight<CR>", { desc = "switch window right" })
@@ -100,6 +100,10 @@ end, { desc = "terminal new horizontal term" })
 map("n", "<leader>v", function()
   require("nvchad.term").new { pos = "vsp" }
 end, { desc = "terminal new vertical term" })
+
+map("n", "<leader>t", function()
+  require("nvchad.term").new { pos = "float" }
+end, { desc = "terminal new floating term" })
 
 -- toggleable
 map({ "n", "t" }, "<A-v>", function()
