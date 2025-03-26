@@ -164,6 +164,12 @@ map("i", "<C-]>", "<Plug>(copilot-next)")
 map("i", "<C-e>", function()
 	return vim.fn["codeium#Accept"]()
 end, { expr = true, silent = true })
+map("i", "<C-q>", function()
+	return vim.fn["codeium#AcceptNextLine"]()
+end, { expr = true, silent = true })
+map("i", "<C-w>", function()
+	return vim.fn["codeium#AcceptNextWord"]()
+end, { expr = true, silent = true })
 
 -- neogit mappings
 map("n", "<leader>gs", ":Neogit kind=split<CR>", { desc = "Neogit split window" })
@@ -180,6 +186,15 @@ map("n", "<leader>gB", ":Neogit branch<CR>", { desc = "Neogit branch" })
 map("n", "<leader>gD", ":Neogit diff<CR>", { desc = "Neogit diff" })
 map("n", "<leader>gX", ":Neogit reset<CR>", { desc = "Neogit reset" })
 map("n", "<leader>gg", ":Neogit<CR>", { desc = "Neogit" })
+
+-- Java
+map(
+	"n",
+	"<leader>jr",
+	":w<CR>:belowright split | terminal java %<CR>:startinsert<CR>",
+	{ desc = "Compile and run current Java file" }
+)
+map("n", "<leader>jc", ":!javac %<CR>", { desc = "Compile current Java file" })
 
 -- lazygit
 map("n", "<leader>lg", ":LazyGit<CR>", { desc = "LazyGit" })

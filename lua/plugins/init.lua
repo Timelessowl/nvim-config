@@ -62,6 +62,9 @@ return {
 	},
 	{
 		"Exafunction/codeium.vim",
+		config = function()
+			require("configs.codeium")
+		end,
 		event = "BufEnter",
 	},
 	{

@@ -44,7 +44,6 @@ lspconfig.jdtls.setup({
 	},
 	filetypes = { "java" },
 	on_attach = function(client, bufnr)
-		print("ATEMPT TO SETUP DAP")
 		require("jdtls").setup_dap({ hotcodereplace = "auto" })
 		require("jdtls.dap").setup_dap_main_class_configs()
 		-- require("jdtls").add_commands()
