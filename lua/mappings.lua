@@ -190,11 +190,32 @@ map("n", "<leader>gg", ":Neogit<CR>", { desc = "Neogit" })
 -- Java
 map(
 	"n",
-	"<leader>jr",
+	"<leader>jf",
 	":w<CR>:belowright split | terminal java %<CR>:startinsert<CR>",
 	{ desc = "Compile and run current Java file" }
 )
 map("n", "<leader>jc", ":!javac %<CR>", { desc = "Compile current Java file" })
+map("n", "<leader>jp", function()
+	local curDir = vim.fn.expand("%:p:h")
+	local mainClass = vim.fn.expand("%:r")
+	local compileAndRunCmd = "mkdir -p "
+		.. curDir
+		.. "/_compiled && javac -d "
+		.. curDir
+		.. "/_compiled "
+		.. curDir
+		.. "/*.java && java -cp "
+		.. curDir
+		.. "/_compiled "
+		.. mainClass
+		.. "&& rm -rf "
+		.. curDir
+		.. "/_compiled"
+
+	vim.cmd("w")
+	vim.cmd("belowright split | terminal " .. compileAndRunCmd)
+	vim.cmd("startinsert")
+end, { desc = "Compile, run (current file as main), and clean" })
 
 -- lazygit
 map("n", "<leader>lg", ":LazyGit<CR>", { desc = "LazyGit" })
